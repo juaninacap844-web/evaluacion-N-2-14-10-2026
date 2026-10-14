@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <title>detalle_estacionamiento</title>
+</head>
+<body>
+    <h1>{{estacionaminento.idEstacionamiento}}</h1>
+    <h2>informacion y detalles</h2> 
+    <br>
+    <br>
+    <h1>Vehiculo:</h1>
+    <h1>{{Vehiculo.patente}}</h1>
+    <table class="table table-striped">
+        <tbody>
+            {% for vehiculo in estacionaminento.vehiculo.all %}
+            <tr>
+                <td>{{vehiculo.marca}}</td>
+                <td>{{vehiculo.modelo}}</td>
+                <td>{{vehiculo.dueno}}</td>
+                <td>{{vehiculo.rut}}</td>
+            </tr>
+        </tbody>    
+    </table>
+    <br>
+    <br>
+    <h1>Ubicacion:</h1>
+    <h1>{{ubicacion.idUbicacion}}</h1>
+    <table class="table table-striped">
+        <tbody>
+            {% for ubicacion in vehiculo.ubicacion.all %}
+            <tr>
+                <td>{{ubicacion.numero}}</td>
+                <td>{{ubicacion.espacio}}</td>
+            </tr>
+        </tbody>    
+    </table>
+    <br>
+    <br>
+    <h1>Utiliza:</h1>
+    <table class="table table-striped">
+        <tbody>
+            {% for utiliza in vehiculo.utiliza.all %}
+            <tr>
+                <td>{{utiliza.inicio}}</td>
+                <td>{{utiliza.fin}}</td>
+                <td>{{utiliza.costo}}</td>
+            </tr>
+        </tbody>    
+    </table>
+    
+    <br>
+    <a href="{% url 'lista_estacionamiento' %}">Volver</a>
+</body>
+</html>
